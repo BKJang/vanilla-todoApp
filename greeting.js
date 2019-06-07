@@ -5,6 +5,22 @@ const greetings = document.querySelector('.js-greetings');
 const USER_STORAGE = 'currentUser';
 const SHOWING_CLASS = 'showing';
 
+function saveItem(value) {
+    localStorage.setItem(USER_STORAGE, value);
+}
+
+function handleSubmit(event) {
+    event.preventDefault();
+    const currentValue = input.value;
+    paintGreetings(currentValue);
+    saveItem();
+}
+
+function askForName() {
+    form.classList.add(SHOWING_CLASS);
+    form.addEventListener('submit', handleSubmit);
+}
+
 function paintGreetings(text) {
     form.classList.remove(SHOWING_CLASS);
     greetings.classList.add(SHOWING_CLASS);
@@ -14,7 +30,7 @@ function paintGreetings(text) {
 function loadName() {
     const currentUser = localStorage.getItem(USER_STORAGE);
     if(!currentUser) {
-        //TODO 사용자 정보가 localStorage에 없을 때 처리
+        askForName();
     } else {
         paintGreetings(currentUser);
     }
