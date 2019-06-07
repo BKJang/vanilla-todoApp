@@ -13,7 +13,7 @@ function handleSubmit(event) {
     event.preventDefault();
     const currentValue = input.value;
     paintGreetings(currentValue);
-    saveItem();
+    saveItem(currentValue);
 }
 
 function askForName() {
@@ -29,6 +29,7 @@ function paintGreetings(text) {
 
 function loadName() {
     const currentUser = localStorage.getItem(USER_STORAGE);
+    
     if(!currentUser) {
         askForName();
     } else {
