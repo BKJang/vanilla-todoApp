@@ -10,19 +10,28 @@
 </head>
 
 <body>
-    <div class="js-clock">
-        <h1>00:00</h1>
+    <div>
+        <div class="header">
+            <div class="top-right">
+                <span class="js-weather"></span>
+            </div>
+        </div>
+        <div class="js-clock contents">
+            <span class="clock-text">00:00</span>
+            <form class="js-form form">
+                <input type="text" class="name-input" placeholder="What is your name?" />
+            </form>
+            <span class="js-greetings greetings"></span>
+            <div class="to-do-container">
+                <form class="js-toDoForm">
+                    <input type="text" class="todo-input" placeholder="Write a to do" />
+                </form>
+                <ul class="js-toDoList">
+                </ul>
+            </div>
+        </div>
+
     </div>
-    <form class="js-form form">
-        <input type="text" placeholder="What is your name?" />
-    </form>
-    <h4 class="js-greetings greetings"></h4>
-    <form class="js-toDoForm">
-        <input type="text" placeholder="Write a to do" />
-    </form>
-    <ul class="js-toDoList">
-    </ul>
-    <span class="js-weather"></span>
     <script src="clock.js"></script>
     <script src="greeting.js"></script>
     <script src="todo.js"></script>
