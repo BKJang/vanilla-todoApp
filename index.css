@@ -21,14 +21,137 @@ body {
     font-size: 120%
 }
 
-.contents {
-    position: absolute;
-    display: block;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    text-align: center;
-    transform: translate(-50%,-50%);
+.todo-template {
+  width: 512px;
+  height: 768px;
+
+  position: relative;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.04);
+
+  margin: 0 auto;
+  margin-top: 96px;
+  margin-bottom: 32px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.todo-head-container {
+  padding-top: 48px;
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.todo-head-container h1 {
+  margin: 0;
+  font-size: 36px;
+  color: #343a40;
+}
+
+.todo-head-container .day {
+  margin-top: 4px;
+  color: #868e96;
+  font-size: 21px;
+}
+
+.todo-head-container .tasks-left {
+  color: #20c997;
+  font-size: 18px;
+  margin-top: 40px;
+  font-weight: bold;
+}
+
+.todo-list-container {
+  flex: 1;
+  padding: 20px 32px;
+  padding-bottom: 48px;
+  overflow-y: auto;
+}
+
+.insert-form-positioner {
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+}
+
+.insert-form {
+  background: #f8f9fa;
+  padding-left: 32px;
+  padding-top: 32px;
+  padding-right: 32px;
+  padding-bottom: 72px;
+
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  border-top: 1px solid #e9ecef;
+}
+
+.insert-input {
+  padding: 12px;
+  border-radius: 4px;
+  border: 1px solid #dee2e6;
+  width: 100%;
+  outline: none;
+  font-size: 18px;
+  box-sizing: border-box;
+  display: none;
+}
+
+.input-open {
+  display: block;
+}
+
+.circle-button {
+  background: #38d9a9;
+
+  z-index: 5;
+  cursor: pointer;
+  width: 80px;
+  height: 80px;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  position: absolute;
+  left: 50%;
+  bottom: 0px;
+  transform: translate(-50%, 50%);
+  color: white;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 10px;
+  transition: 0.125s all ease-in;
+}
+
+.btn-open {
+  background: #ff6b6b;
+
+      transform: translate(-50%, 50%) rotate(45deg);
+}
+
+.btn-open :hover {
+  background: #ff8787;
+}
+
+.btn-open :active {
+  background: #ff8787
+}
+
+.circle-button :hover {
+  background: #63e6be;
+}
+
+.circle-button :active {
+  background: #20c997;
 }
 
 .clock-text {
@@ -40,52 +163,6 @@ body {
 .greetings {
     display: none;
 }
-
-.to-do-container {
-    left: 0;
-    top: 70.5%;
-    transform: none;
-    text-align: center;
-}
-
-.todo-input {
-    width: 35%;
-    padding-top: 5%;
-    background: 0;
-    border: 0;
-    border-bottom: 2px solid #fff;
-    color: #fff;
-    font-weight: 500;
-    outline: 0;
-    text-align: center;
-    transition: border-color .2s ease;
-    font-size: 150%;
-}
-
-.name-input {
-    width: 35%;
-    background: 0;
-    border: 0;
-    border-bottom: 2px solid #fff;
-    color: #fff;
-    font-weight: 500;
-    outline: 0;
-    text-align: center;
-    transition: border-color .2s ease;
-    font-size: 100%;
-}
-
-.name-input::placeholder {
-    color: #fff;
-    font-style: italic;
-    font-size: 100%;
-  }
-
-.todo-input::placeholder {
-    color: #fff;
-    font-style: italic;
-    font-size: 200%;
-  }
 
 .showing {
     display: block;
@@ -118,13 +195,13 @@ ul {
 }
 
 ul li span {
-    color: white;
+    color: #343a40;
     font-size : 150%;
 }
 
 ul li button{
     background:transparent;
-    color:#fff;
+    color: #ff6b6b;
     border:none;
     position:relative;
     height:40px;
