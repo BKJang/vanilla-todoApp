@@ -1,6 +1,5 @@
 import gulp from 'gulp';
 import minifyhtml from 'gulp-minify-html';
-import serveStatic from 'serve-static';
 import del from 'del';
 import ws from 'gulp-webserver';
 import gimage from 'gulp-image';
@@ -47,7 +46,6 @@ const webserver = () => gulp
   .pipe(ws({
     livereload: true,
     open: true,
-    middleware: [serveStatic(__dirname + '/build')]
   }));
 
 const img = () => gulp
