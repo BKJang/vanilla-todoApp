@@ -1,5 +1,6 @@
 import gulp from 'gulp';
 import minifyhtml from 'gulp-minify-html';
+import serveStatic from 'serve-static';
 import del from 'del';
 import ws from 'gulp-webserver';
 import gimage from 'gulp-image';
@@ -43,7 +44,11 @@ const clean = () => del(["build", ".publish"]);
 
 const webserver = () => gulp
   .src("build")
-  .pipe(ws({ livereload: true, open: true }));
+  .pipe(ws({
+    livereload: true,
+    open: true,
+    middleware: [serveStatic(__dirname + '/build')]
+  }));
 
 const img = () => gulp
   .src(routes.img.src)

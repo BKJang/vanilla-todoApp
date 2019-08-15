@@ -17,7 +17,8 @@ function filterToDo(toDo, targetId) {
 }
 
 function deleteToDo(event) {
-  if (event.target.tagName === 'BUTTON') {
+  console.log(event.target.tagName);
+  if (event.target.tagName === 'I') {
     const targetId = event.target.parentNode.id;
     const li = event.target.parentNode;
 
@@ -29,17 +30,29 @@ function deleteToDo(event) {
   }
 }
 
+function paintLeftTasks() {
+  const parsedTodos = getTodos();
+  const span = document.createElement('span');
+  toDoTasksLeft.innerHTML = null;
+  span.innerText = `남은 할 일: ${parsedTodos.length}개`;
+
+  toDoTasksLeft.insertAdjacentElement('afterbegin', span);  
+}
+
 function saveToDo() {
   localStorage.setItem(TODO_LIST, JSON.stringify(toDos));
+  paintLeftTasks();
 }
 
 function paintToDo(value) {
   const li = document.createElement('li');
-  const deleteBtn = document.createElement('button');
+  const deleteBtn = document.createElement('i');
   const span = document.createElement('span');
   const toDoId = toDos.length + 1;
 
-  deleteBtn.innerText = 'X';
+  deleteBtn.classList.add('material-icons');
+  deleteBtn.innerText = 'delete';
+  `<i class="material-icons">delete</i>`;
   span.innerText = value;
 
   li.appendChild(span);
@@ -93,21 +106,29 @@ function loadDate() {
   toDoWeekDay.insertAdjacentText('afterbegin', day);
 }
 
-function loadToDos() {
+function getTodos() {
   const loadedToDos = localStorage.getItem(TODO_LIST);
+
   let parsedToDos = [];
 
   if (loadedToDos) {
     parsedToDos = JSON.parse(loadedToDos);
-    parsedToDos.map((item) => {
-      return paintToDo(item.todo);
-    });
+  }
+
+  return parsedToDos;
+}
+
+function loadToDos() {
+  let parsedToDos = getTodos();
+
+  parsedToDos.map((item) => {
+    return paintToDo(item.todo);
+  });
+
+  if (parsedToDos.length === 0) {
+    paintLeftTasks();
   }
   
-  const span = document.createElement('span');
-  span.innerText = `남은 할 일: ${parsedToDos.length}개`;
-
-  toDoTasksLeft.insertAdjacentElement('afterbegin', span);
   toDoList.addEventListener('click', function (event) {
     deleteToDo(event);
   });
