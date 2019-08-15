@@ -1,0 +1,244 @@
+@import "_reset";
+@import "_variable";
+
+body {
+  background-color: #2c3e50;
+  color: #34495e;
+}
+
+.header {
+  z-index: 4;
+  height: 10%
+}
+
+.top-right {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  text-align: right;
+  padding-right: 10px;
+  color: white;
+  font-size: 120%
+}
+
+.todo-template {
+width: 512px;
+height: 768px;
+
+position: relative;
+background: white;
+border-radius: 16px;
+box-shadow: 0 0 8px rgba(0, 0, 0, 0.04);
+
+margin: 0 auto;
+margin-top: 96px;
+margin-bottom: 32px;
+
+display: flex;
+flex-direction: column;
+}
+
+.todo-head-container {
+padding-top: 48px;
+padding-left: 32px;
+padding-right: 32px;
+padding-bottom: 24px;
+border-bottom: 1px solid #e9ecef;
+}
+
+.todo-head-container h1 {
+margin: 0;
+font-size: 36px;
+color: #343a40;
+}
+
+.todo-head-container .day {
+margin-top: 4px;
+color: #868e96;
+font-size: 21px;
+}
+
+.todo-head-container .tasks-left {
+color: #20c997;
+font-size: 18px;
+margin-top: 40px;
+font-weight: bold;
+}
+
+.todo-list-container {
+flex: 1;
+padding: 20px 32px;
+padding-bottom: 48px;
+overflow-y: auto;
+}
+
+.insert-form-positioner {
+width: 100%;
+bottom: 0;
+left: 0;
+position: absolute;
+}
+
+.insert-form {
+background: #f8f9fa;
+padding-left: 32px;
+padding-top: 32px;
+padding-right: 32px;
+padding-bottom: 72px;
+
+border-bottom-left-radius: 16px;
+border-bottom-right-radius: 16px;
+border-top: 1px solid #e9ecef;
+}
+
+.insert-input {
+padding: 12px;
+border-radius: 4px;
+border: 1px solid #dee2e6;
+width: 100%;
+outline: none;
+font-size: 18px;
+box-sizing: border-box;
+display: none;
+}
+
+.input-open {
+display: block;
+}
+
+.circle-button {
+background: #38d9a9;
+
+z-index: 5;
+cursor: pointer;
+width: 80px;
+height: 80px;
+display: block;
+align-items: center;
+justify-content: center;
+font-size: 60px;
+position: absolute;
+left: 50%;
+bottom: 0px;
+transform: translate(-50%, 50%);
+color: white;
+border-radius: 50%;
+border: none;
+outline: none;
+display: flex;
+align-items: center;
+justify-content: center;
+padding-bottom: 10px;
+transition: 0.125s all ease-in;
+}
+
+.btn-open {
+background: #ff6b6b;
+
+    transform: translate(-50%, 50%) rotate(45deg);
+}
+
+.btn-open :hover {
+background: #ff8787;
+}
+
+.btn-open :active {
+background: #ff8787
+}
+
+.circle-button :hover {
+background: #63e6be;
+}
+
+.circle-button :active {
+background: #20c997;
+}
+
+.clock-text {
+  color:white; 
+  font-size: 1000%;
+}
+
+.form,
+.greetings {
+  display: none;
+}
+
+.showing {
+  display: block;
+  color: #fff;
+  font-size: 400%;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+.bgImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  animation: fadeIn 0.5s linear;
+  opacity: 0.5
+}
+
+ul {
+  list-style:none;
+}
+
+ul li span {
+  color: #343a40;
+  font-size : 150%;
+}
+
+ul li button{
+  background:transparent;
+  color: #ff6b6b;
+  border:none;
+  position:relative;
+  height:40px;
+  font-size:1.6em;
+  margin-left: 10px;
+  cursor:pointer;
+  transition:300ms ease all;
+  outline:none;
+}
+
+ul li button:hover {
+  background:transparent;
+  color:white;
+}
+    
+ul li button:before,ul li button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: yellow;
+  transition:100ms ease all;
+}
+    
+ul li button:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+
+ul li button:hover:before,ul li button:hover:after{
+  width:100%;
+  transition:100ms ease all;
+}
