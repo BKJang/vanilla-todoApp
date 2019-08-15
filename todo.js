@@ -95,14 +95,19 @@ function loadDate() {
 
 function loadToDos() {
   const loadedToDos = localStorage.getItem(TODO_LIST);
+  let parsedToDos = [];
 
   if (loadedToDos) {
-    const parsedToDos = JSON.parse(loadedToDos);
+    parsedToDos = JSON.parse(loadedToDos);
     parsedToDos.map((item) => {
       return paintToDo(item.todo);
     });
   }
+  
+  const span = document.createElement('span');
+  span.innerText = `남은 할 일: ${parsedToDos.length}개`;
 
+  toDoTasksLeft.insertAdjacentElement('afterbegin', span);
   toDoList.addEventListener('click', function (event) {
     deleteToDo(event);
   });
