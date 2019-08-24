@@ -1,4 +1,4 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-"use strict";var body=document.querySelector("body"),IMG_NUMBER=5;function paintImage(a){var n=new Image;n.src="/vanilla-todoApp/img/".concat(a,".jpg"),n.classList.add("bgImage"),body.appendChild(n)}function getRandom(){return Math.floor(Math.random()*IMG_NUMBER)+1}function init(){paintImage(getRandom())}init();
+"use strict";var body=document.querySelector("body"),IMG_NUMBER=5;function paintImage(n){var t=new Image;t.src="/img/".concat(n,".jpg"),t.classList.add("bgImage"),body.appendChild(t)}function getRandom(){return Math.floor(Math.random()*IMG_NUMBER)+1}function init(){paintImage(getRandom())}init();
 
 },{}]},{},[1]);
